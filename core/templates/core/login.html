@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - LETSGOTRIP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: url("https://images.unsplash.com/photo-1508780709619-79562169bc64") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      width: 350px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: slideIn 0.8s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ddd;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .btn {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 12px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+      color: #1e3d59;
+      transform: scale(1.05);
+    }
+
+    .link {
+      display: block;
+      margin-top: 1rem;
+      text-align: center;
+      color: #eee;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+      color: #ffefef;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <form method="post" class="form-box">
+      <h2> LOGIN</h2>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn" type="submit">Login</button>
+      <a class="link" href="{% url 'register' %}">Don't have an account? Register</a>
+    </form>
+  </div>
+</body>
+</html>

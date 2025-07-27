@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookings</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'core/images/lake.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+        }
+        .booking-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        .booking-card {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .booking-card p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #ff6600;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <h2>My Bookings</h2>
+        {% for booking in bookings %}
+        <div class="booking-card">
+            <p><strong>Package:</strong> {{ booking.package.title }}</p>
+            <p><strong>Destination:</strong> {{ booking.package.category }}</p>
+            <p><strong>Price:</strong> ₹{{ booking.package.price }}</p>
+            <p><strong>Booked for:</strong> {{ booking.num_people }} people</p>
+            <p><strong>Contact:</strong> {{ booking.contact_phone }} | {{ booking.contact_email }}</p>
+            <p><strong>Booking Date:</strong> {{ booking.booking_date }}</p>
+            <a class="btn" href="{% url 'download_invoice' booking.id %}">Download Invoice</a>
+        </div>
+        {% empty %}
+        <p style="text-align:center;">You have not booked any packages yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment - LETSGOTRIP</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .box {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .pay-btn {
+            background-color: #0077cc;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .pay-btn:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Payment for {{ booking.package.title }}</h2>
+        <p>Amount: ₹{{ booking.package.price }}</p>
+        <p>User: {{ booking.user.username }}</p>
+        <p>Email: {{ booking.email }}</p>
+        <p>Phone: {{ booking.phone }}</p>
+
+        <button id="rzp-button" class="pay-btn">Pay Now</button>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "{{ razorpay_key_id }}",
+            "amount": "{{ order.amount }}",
+            "currency": "INR",
+            "name": "LETSGOTRIP",
+            "description": "{{ booking.package.title }}",
+            "order_id": "{{ order.id }}",
+            "handler": function (response){
+                alert("Payment Successful!");
+                window.location.href = "{% url 'payment_success' %}";
+            },
+            "prefill": {
+                "name": "{{ booking.user.username }}",
+                "email": "{{ booking.email }}",
+                "contact": "{{ booking.phone }}"
+            },
+            "theme": {
+                "color": "#0077cc"
+            }
+        };
+        var rzp = new Razorpay(options);
+        document.getElementById('rzp-button').onclick = function(e){
+            rzp.open();
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>

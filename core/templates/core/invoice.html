@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; }
+        h2 { text-align: center; }
+        .section { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Booking Invoice</h2>
+
+    <div class="section">
+        <p><strong>User:</strong> {{ booking.user.username }}</p>
+        <p><strong>Email:</strong> {{ booking.contact_email }}</p>
+        <p><strong>Phone:</strong> {{ booking.contact_phone }}</p>
+    </div>
+
+    <div class="section">
+        <p><strong>Package:</strong> {{ booking.package.title }}</p>
+        <p><strong>Destination:</strong> {{ booking.package.category }}</p>
+        <p><strong>Price:</strong> ₹{{ booking.package.price }}</p>
+        <p><strong>Number of People:</strong> {{ booking.num_people }}</p>
+        <p><strong>Booking Date:</strong> {{ booking.booking_date }}</p>
+    </div>
+</body>
+</html>

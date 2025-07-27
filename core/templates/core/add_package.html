@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Package - LETSGOTRIP</title>
+  <link rel="stylesheet" href="{% static 'core/css/auth.css' %}">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .form-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 600px;
+      margin: 100px auto;
+      animation: slideIn 0.6s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #007bff, #00c6ff);
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s ease;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #0056b3, #0096c7);
+      transform: scale(1.05);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Add New Package</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-group">
+          <label>{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <small style="color:red">{{ field.errors|join:", " }}</small>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn">Submit Package</button>
+    </form>
+  </div>
+</body>
+</html>

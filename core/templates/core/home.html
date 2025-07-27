@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LETSGOTRIP - Explore The World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+    }
+
+    body {
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center center fixed;
+      background-size: cover;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.05); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .overlay {
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2rem 3rem;
+      border-radius: 15px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      animation: slideInUp 0.8s ease;
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .content-box h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .content-box p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 2px solid white;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+      backdrop-filter: blur(3px);
+    }
+
+    .btn:hover {
+      background: white;
+      color: #1e3d59;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="content-box">
+      <h1>LETSGOTRIP</h1>
+      <p>Plan your perfect exploration with us </p>
+      <div class="btn-group">
+        <a href="{% url 'login' %}" class="btn"> LOGIN</a>
+        <a href="{% url 'register' %}" class="btn">REGISTER</a>
+        <a href="{% url 'user_dashboard' %}" class="btn">BROWSE PACKAGES</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

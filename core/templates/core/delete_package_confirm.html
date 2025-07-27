@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confirm Delete</title>
+</head>
+<body style="background:#222;color:white;font-family:Poppins;padding:3rem;text-align:center;">
+  <h2>Are you sure you want to delete the package:</h2>
+  <h3>{{ package.title }}</h3>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" style="padding:10px 20px;margin:1rem;background:red;color:white;border:none;border-radius:8px;">Yes, Delete</button>
+    <a href="{% url 'vendor_packages' %}" style="padding:10px 20px;background:gray;color:white;text-decoration:none;border-radius:8px;">Cancel</a>
+  </form>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Package - LETSGOTRIP</title>
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      margin-top: 30px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .razorpay-payment-button {
+      background-color: #ff4d4d !important;
+      color: #fff !important;
+      padding: 12px 20px !important;
+      font-size: 1rem !important;
+      border-radius: 8px !important;
+      border: none !important;
+      cursor: pointer !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Book: {{ package.title }}</h2>
+
+
+    <p><strong>Price:</strong> ₹{{ package.price }}</p>
+    <p><strong>Duration:</strong> {{ package.duration }}</p>
+
+
+    <form>
+      <script
+        src="https://checkout.razorpay.com/v1/payment-button.js"
+        data-payment_button_id="pl_QlkXrHPPFBIriY"
+        async>
+      </script>
+    </form>
+  </div>
+</body>
+</html>

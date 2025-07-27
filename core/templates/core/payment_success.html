@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Success</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #eaf9ea;
+      color: #2e7d32;
+      text-align: center;
+      padding: 3rem;
+    }
+    .success {
+      background: #c8e6c9;
+      border: 2px solid #2e7d32;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+    }
+    .success h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="success">
+    <h2>✅ Payment Successful!</h2>
+    <p>Thank you {{ booking.user.username }} for booking <strong>{{ booking.package.title }}</strong></p>
+    <p>We’ll contact you shortly on {{ booking.contact_email }}</p>
+    <a class="back" href="{% url 'user_dashboard' %}">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

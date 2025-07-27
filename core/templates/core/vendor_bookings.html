@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Bookings - Vendor | LETSGOTRIP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    background: url("https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1400&q=80") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding: 3rem 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1s ease;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #eee;
+    }
+
+    th {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+      color: #1e3d59;
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h2>My Bookings</h2>
+
+    {% if bookings %}
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Package</th>
+          <th>People</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Booking Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for booking in bookings %}
+        <tr>
+          <td>{{ booking.user.username }}</td>
+          <td>{{ booking.package.title }}</td>
+          <td>{{ booking.num_people }}</td>
+          <td>{{ booking.contact_phone }}</td>
+          <td>{{ booking.contact_email }}</td>
+          <td>{{ booking.booking_date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <p>No bookings yet.</p>
+    {% endif %}
+
+    <div class="back-btn">
+      <a href="{% url 'vendor_dashboard' %}" class="btn">Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Package - LETSGOTRIP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url("https://images.unsplash.com/photo-1523413651479-597eb2da0ad6") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.6);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    .form-box {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      width: 450px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .btn {
+      display: block;
+      margin-top: 1rem;
+      padding: 12px;
+      width: 100%;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid white;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: white;
+      color: #1e3d59;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <form method="post" enctype="multipart/form-data" class="form-box">
+      <h2>Edit Package</h2>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn">Save Changes</button>
+      <a href="{% url 'vendor_packages' %}" class="btn">Cancel</a>
+    </form>
+  </div>
+</body>
+</html>

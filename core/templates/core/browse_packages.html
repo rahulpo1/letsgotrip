@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browse Packages</title>
+    <link rel="stylesheet" href="{% static 'core/css/cards.css' %}">
+</head>
+<body>
+  <div class="card-container">
+    <h2>Explore Our Tour Packages</h2>
+    <div class="cards">
+      {% for pkg in packages %}
+      <div class="card">
+        <img src="{{ pkg.image.url }}" alt="{{ pkg.title }}">
+        <h3>{{ pkg.title }}</h3>
+        <p>₹{{ pkg.price }} | {{ pkg.duration }}</p>
+        <p>{{ pkg.description|truncatewords:20 }}</p>
+        <button class="book-btn">Book Now</button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

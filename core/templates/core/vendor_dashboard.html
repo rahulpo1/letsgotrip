@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vendor Dashboard - LETSGOTRIP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .form-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      color: #eee;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid #fff;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+      color: #1e3d59;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="form-box">
+      <h2>Welcome, {{ request.user.username }}</h2>
+      <p>You are logged in as <strong>{{ request.user.role }}</strong></p>
+      <a href="{% url 'vendor_packages' %}" class="btn">Manage Packages</a>
+      <a href="{% url 'vendor_bookings' %}" class="btn">View Bookings</a>
+      <a href="{% url 'logout' %}" class="btn">Logout</a>
+    </div>
+  </div>
+</body>
+</html>

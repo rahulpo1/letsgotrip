@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #f0f8ff, #e0ffff);
+}
+
+nav {
+  background-color: #1e3d59;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ffcc00;
+}
+
+.hero {
+  padding: 5rem 2rem;
+  background-image: url('/static/core/images/hero-bg.jpg'); /* Add your image */
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
